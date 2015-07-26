@@ -1,0 +1,216 @@
+Codebook
+
+
+Project Description
+
+The project uses the data collected from the accelerometers from the Samsung
+Galaxy S Smartphone. The project combines the test and train datasets and 
+selects those variables that are capturing a mean or a standard deviation, 
+and then for each user and each activity summarizes the mean of those 
+selected variables in a tidy dataset named "tidy_group_means.txt"
+
+
+Collection of the raw data
+
+The raw data was downloaded from the following link on 7/24/2015
+https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+The reference for the data is:
+Human Activity Recognition Using Smartphones Dataset
+Version 1.0
+Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. 
+Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly 
+Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). 
+Vitoria-Gasteiz, Spain. Dec 2012
+
+
+Notes on the raw data
+
+See the accompanying README.md file
+
+
+Creating the tidy data file
+
+1) Download the data
+2) Combine subjects and activities data with measurement data
+3) Combine train and test data
+4) Select only columns that contain measurements of mean or standard deviation
+5) Rename variables
+6) Take the mean for each group of measurments for each subject/activity pair
+7) Output the tidy data into a .txt file
+
+
+Cleaning the data
+
+The accompanying script downloads, unzips, and reads in the data collected
+from the accelerometers from the Samsung Galaxy S smartphone. The script 
+matches the subjects (1 through 30) with the activities (e.g, walking, 
+sitting, etc.), for both the test and train datasets, and combines these 
+into a dataset called, fulldata. The script then selects only variables 
+that include either the a mean or standard deviation measurement and 
+creates a subset called, data_mean_std (dim=1099 x 88). 
+The variables in this dataset are then renamed to follow a 
+more meaningful pattern. The script then groups by subject and
+activity and generates the mean value of each measurement for each
+subject-activity pairing in a dataset called, tidy_group_means. 
+
+
+Description of tidy_group_means.txt file
+
+Dimension of the dataframe is 180x88
+The variables present in the dataframe are:
+			subject
+			activity
+                        groupmeanY_tBodyAccelerometer
+			groupmeanY_tBodyAccelerometer
+                        groupmeanZ_tBodyAccelerometer
+                        groupmeanX_tGravityAccelerometer
+                        groupmeanY_tGravityAccelerometer
+                        groupmeanZ_tGravityAccelerometer
+                        groupmeanX_tBodyAccelerometerJerk
+                        groupmeanY_tBodyAccelerometerJerk
+                        groupmeanZ_tBodyAccelerometerJerk
+                        groupmeanX_tBodyGyroscope
+                        groupmeanY_tBodyGyroscope
+                        groupmeanZ_tBodyGyroscope
+                        groupmeanX_tBodyGyroscopeJerk
+                        groupmeanY_tBodyGyroscopeJerk
+                        groupmeanZ_tBodyGyroscopeJerk
+                        groupmean_tBodyAcceleratorMag
+                        groupmean_tGravityAcceleratorMag
+                        groupmean_tBodyAcceleratoryJerkMag
+                        groupmean_tBodyGryroscopeMag
+                        groupmean_tBodyGyroscopeJerkMag
+                        groupmeanX_fBodyAccelerator
+                        groupmeanY_fBodyAccelerator
+                        groupmeanZ_fBodyAccelerator
+                        groupmeanfX_fBodyAccelerator
+                        groupmeanfY_fBodyAccelerator
+                        groupmeanfZ_fBodyAccelerator
+                        groupmeanX_fBodyAcceleratorJerk
+                        groupmeanY_fBodyAcceleratorJerk
+                        groupmeanZ_fBodyAcceleratorJerk
+                        groupmeanfX_fBodyAcceleratorJerk
+                        groupmeanfY_fBodyAcceleratorJerk
+                        groupmeanfZ_fBodyAcceleratorJerk
+                        groupmeanX_fBodyGyroscope
+                        groupmeanY_fBodyGyroscope
+                        groupmeanZ_fBodyGyroscope
+                        groupmeanfX_fBodyGyroscope
+                        groupmeanfY_fBodyGyroscope
+                        groupmeanfZ_fBodyGyroscope
+                        greoupmean_fBodyAcceleratorMag
+                        groupmeanf_fBodyAcceleratorMag
+                        groupmean_fBodyBodyAcceleratorJerkMag
+                        groupmeanf_fBodyBodyAcceleratorJerkMag
+                        groupmean_fBodyBodyGyroscopeMag
+                        groupmeanf_fBodyBodyGyroscopeMag
+                        groupmean_fBodyBodyGyroscopeJerkMag
+                        groupmeanf_fBodyBodyGyroscopeJerkMag
+                        groupangle_tBodyAccMean_gravity
+                        groupangle_tBodyAcckJerkMean_gravityMean
+                        groupangle_tBodyGyroMean_gravityMean
+                        groupangle_tBodyGyroJerkMean_gravityMean
+                        groupangle_X_gravityMean
+                        groupangle_Y_gravityMean
+                        groupangle_Z_gravityMean
+                        groupstdX_tBodyAccelerator
+                        groupstdY_tBodyAccelerator
+                        groupstdZ_tBodyAccelerator
+                        groupstdX_tGravityAccelerator
+                        groupstdY_tGravityAccelerator
+                        groupstdZ_tGravityAccelerator
+                        groupstdX_tBodyAcceleratorJerk
+                        groupstdY_tBodyAcceleratorJerk
+                        groupstdZ_tBodyAcceleratorJerk
+                        groupstdX_tBodyGyroscope
+                        groupstdY_tBodyGyroscope
+                        groupstdZ_tBodyGyroscope
+                        groupstdX_tBodyGyroscopeJerk
+                        groupstdY_tBodyGyroscopeJerk
+                        groupstdZ_tBodyGyroscopeJerk
+                        groupstd_tBodyAcceleratorMag
+                        groupstd_tGravityAcceleratorMag
+                        groupstd_tBodyAcceleratorJerkMag
+                        groupstd_tBodyGyroscopeMag
+                        groupstd_tBodyGyroscopeJerkMag
+                        groupstdX_fBodyAccelerator
+                        groupstdY_fBodyAccelerator
+                        groupstdZ_fBodyAccelerator
+                        groupstdX_fBodyAcceleratorJerk
+                        groupstdY_fBodyAcceleratorJerk
+                        groupstdZ_fBodyAcceleratorJerk
+                        groupstdX_fBodyGyroscope
+                        groupstdY_fBodyGyroscope
+                        groupstdZ_fBodyGyroscope
+                        groupstd_fBodyAcceleratorMag
+                        groupstd_fBodyAcceleratorJerkMag
+                        groupstd_fBodyBodyGyroscopeMag
+                        groupstd_fBodyBodyGyroscopeJerkMag
+
+Variables
+
+subject (class: integer)
+Subject are numbered one through thirty. Each subject performed all six activities and had multiple 
+readings for each of the measurements.
+
+activity (class: factor)
+The six factor levels for the activity variable are: walk, walk_up, walk_down, lay, sit, stand
+and represent different activities that were performed while the various measurements were taken.
+
+Commonalities and components of all other variables
+1) class: numeric
+2) represent a mean statistic over the multiple readings for each subject/activity pair, and 
+therefore begin with the the letters "group"
+3) if the original measurement was a mean statistic, then the variable name begins with 
+"groupmean"
+4) if the original measurement was a standard deviation statistice, then the variable name
+begins with "groupstd"
+5) for "groupmean" and "groupstd" varialbes that are measurements along the X, Y, or Z axis,
+an X, Y, or Z will follow the "groupmean" or "groupstd" portion of the varialbe anme as in,
+"groupmeanX" or "groupstdY"
+6) if the original measurement was a mean of a frequency statistic, then the variable name
+begins with "groupmeanf", with the f denoting frequency
+7) Gyroscope and Accelerator have been written out in the varialbe names in the 
+tidy_group_means.txt dataset for clarity
+8) group variables that represent the angle between vectors begin with "groupangle"
+9) the acceleration signal is separated into "Body" and "Gravity"
+10) "tBody" or "tGravity" in the variable name indicates that these are time domain 
+signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz.
+11) "fBody" or "fGravity" in the varialbe name indicates these measurments are
+for frequency domain signals.
+12) Variables including "Jerk" in the variable name were derived from 
+the body linear acceleration and angular velocity.
+13) A Fast Fourier Transform (FFT) was applied to some of these signals producing 
+fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. 
+
+
+Variable names based on the commonalities and components:
+groupmeanX_tBodyAccelerometer is the overall mean of the multiple readings for each
+subject/activity pair of the variable that measures the mean reading of the X-axis
+of the time signal for Body of the Accelerometer.
+groupmeanY_tBodyAccelerometer is the overall mean of the multiple readings for each
+subject/activity pair of the variable that measures the mean reading of the Y-axis
+of the time signal for Body of the Accelerometer.
+groupmeanZ_tBodyAccelerometer is the overall mean of the multiple readings for each
+subject/activity pair of the variable that measures the mean reading of the Z-axis
+of the time signal for Body of the Accelerometer.
+groupmeanX_tGravityAccelerometer is the overall mean of the multiple readings for each
+subject/activity pair of the variable that measures the mean reading of the X-axis
+of the time signal for Gravity of the Accelerometer.
+groupmeanY_tGravityAccelerometer is the overall mean of the multiple readings for each
+subject/activity pair of the variable that measures the mean reading of the X-axis
+of the time signal for Gravity of the Accelerometer.
+groupmeanZ_tGravityAccelerometer is the overall mean of the multiple readings for each
+subject/activity pair of the variable that measures the mean reading of the X-axis
+of the time signal for Gravity of the Accelerometer.
+groupmeanX_tBodyAccelerometerJerk is the overall mean of the multiple readings for each
+subject/activity pair of the variable that measures the mean reading of the X-axis
+of the time signal for Body of the Accelerometer applying the Fast Fourier Transform.
+groupmeanY_tBodyAccelerometerJerk is the overall mean of the multiple readings for each
+subject/activity pair of the variable that measures the mean reading of the Y-axis
+of the time signal for Body of the Accelerometer applying the Fast Fourier Transform.
+groupmeanZ_tBodyAccelerometerJerk is the overall mean of the multiple readings for each
+subject/activity pair of the variable that measures the mean reading of the Z-axis
+of the time signal for Body of the Accelerometer applying the Fast Fourier Transform.
+
+The remaining variables are similarly constructed by combining the components described above.
